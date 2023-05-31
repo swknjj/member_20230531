@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns::th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+<div th:replace="component/header :: header"></div>
+<div th:replace="component/nav :: nav"></div>
+<table>
+  <tr>
+    <th>id</th>
+    <th>계정</th>
+    <th>비밀번호</th>
+    <th>이름</th>
+    <th>생년월일</th>
+    <th>전화번호</th>
+    <th>조회</th>
+    <th>삭제</th>
+  </tr>
+  <tr th:each="list: ${member}">
+    <td th:text="${list.id}"></td>
+    <td th:text="${list.memberEmail}"></td>
+    <td th:text="${list.memberPassword}"></td>
+    <td th:text="${list.memberName}"></td>
+    <td th:text="${list.memberBirth}"></td>
+    <td th:text="${list.memberMobile}"></td>
+    <td><a th:href="@{|/member/${list.id}|}">조회</a></td>
+    <td><a th:href="@{|/member/update/${list.id}|}">수정</a></td>
+    <td><a th:href="@{|/member/delete/${list.id}|}">삭제</a></td>
+  </tr>
+</table>
+<button onclick="back()">뒤로</button>
+<div th:replace="component/footer :: footer"></div>
+</body>
+<script>
+  const back = () => {
+    history.back();
+  }
+</script>
+</html>

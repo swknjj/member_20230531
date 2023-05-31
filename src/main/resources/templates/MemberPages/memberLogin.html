@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns::th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    input {
+        display: block;
+    }
+
+    label {
+        display: block;
+    }
+</style>
+<body>
+<div th:replace="component/header :: header"></div>
+<div th:replace="component/nav :: nav"></div>
+<form action="/member/login" method="post">
+    <label for="member-email">이메일
+        <input type="text" id="member-email" name="memberEmail">
+    </label>
+    <label for="member-password">비밀번호
+        <input type="text" id="member-password" name="memberPassword">
+    </label>
+    <input type="submit" value="로그인"><button onclick="back()">뒤로가기</button>
+</form>
+<div th:replace="component/footer :: footer"></div>
+</body>
+<script>
+    const back = () => {
+        history.back();
+    }
+</script>
+</html>

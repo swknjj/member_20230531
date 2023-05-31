@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            display: block;
+        }
+
+        label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="component/header :: header"></div>
+<div th:replace="component/nav :: nav"></div>
+<form action="/member/update" method="post">
+    <label for="member-id">아이디
+        <input type="text" id="member-id" name="id" th:value="${member.id}" readonly>
+    </label>
+    <label for="member-email">이메일
+        <input type="text" id="member-email" name="memberEmail" th:value="${member.memberEmail}">
+    </label>
+    <label for="member-password">비밀번호
+        <input type="password" id="member-password" name="memberPassword" th:value="${member.memberPassword}">
+    </label>
+    <label for="member-name">이름
+        <input type="text" id="member-name" name="memberName" th:value="${member.memberName}">
+    </label>
+    <label for="member-birth">생년월일
+        <input type="date" id="member-birth" name="memberBirth" th:value="${member.memberBirth}">
+    </label>
+    <label for="member-mobile">전화번호
+        <input type="text" id="member-mobile" name="memberMobile" th:value="${member.memberMobile}">
+    </label>
+    <input type="submit" value="수정하기">
+</form>
+<!--<button onclick="update()">수정하기</button>-->
+<button onclick="back()">뒤로가기</button>
+<div th:replace="component/footer :: footer"></div>
+</body>
+<script>
+    const back = () => {
+        history.back();
+    }
+    // const update = () => {
+    //     location.href="@{|/member/${member.id}|}";
+    // }
+</script>
+</html>
